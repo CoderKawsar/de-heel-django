@@ -80,7 +80,7 @@
         <section class="mt-4">
             <form method="get" id="filterForm">
                 <!-- Category Heading (Non-clickable and Bold) -->
-                <h1 class="m-1 rounded-sm bg-[#5ba164] font-bold text-xl text-white text-center">Category</h1>
+                <!-- <h1 class="m-1 rounded-sm bg-[#5ba164] font-bold text-xl text-white text-center">Category</h1> -->
 
                 <!-- All Products Option -->
                 <div class="accordion-item rounded-sm overflow-hidden">
@@ -149,7 +149,7 @@
           <!-- Category Section -->
           <div class="col-span-3 bg-white m- 10 p-10 hidden md:block">
               <form method="get" id="filterForm">
-                  <h1 class="text-xl font-bold text-[#5ba164] text-center mb-4">Category</h1>
+                  <!-- <h1 class="text-xl font-bold text-[#5ba164] text-center mb-4">Category</h1> -->
   
                   <!-- All Products Option -->
                   <div class="accordion-item rounded-sm overflow-hidden">
@@ -163,7 +163,7 @@
                       {% for level1 in level1_categories %}
                       <div class="accordion-item rounded-sm overflow-hidden">
                           <button type="button" class="accordion-header flex justify-between gap-2 items-center w-full group transition-all duration-300 ease-in-out">
-                              <span class="text-xl font-medium text-black">{{ level1.name }}</span>
+                              <span class="text-xl font-medium text-black capitalize">{{ level1.name }}</span>
                               <span class="shrink-0 text-2xl transition-transform duration-300 group-[.active]:rotate-180">
                                   <i class="fa-solid fa-chevron-down text-black"></i>
                               </span>
@@ -175,7 +175,7 @@
                                   <div class="accordion flex flex-col">
                                       <div class="accordion-item border-b border-slate-200">
                                           <button type="button" class="accordion-header flex justify-between gap-2 items-center w-full group transition-all duration-300 ease-in-out">
-                                              <span class="text-lg font-medium text-black">{{ level2.name }}</span>
+                                              <span class="text-lg font-medium text-black capitalize">{{ level2.name }}</span>
                                               <span class="shrink-0 text-2xl transition-transform duration-300 group-[.active]:rotate-180">
                                                   <i class="fa-solid fa-chevron-down text-black"></i>
                                               </span>
@@ -207,19 +207,19 @@
   
           <!-- Product Section -->
           <div class="col-span-12 md:col-span-9 ">
-              <h2 class="text-lg text-center md:text-4xl font-bold mb-8">Products</h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <h2 class="text-lg text-center md:text-[64px] font-bold mb-16">Our Products</h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {% for product in products %}
                   <div class="rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">
                       <div class="relative">
                           <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-[250px] object-cover">
                           <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-4 py-1 rounded-full">MOQ: {{ product.minimum_order_quantity }}</span>
                       </div>
-                      <div class="p-4 bg-[#D3E6D8]">
-                          <h3 class="text-lg font-semibold">{{ product.name }}</h3>
-                          <div class="flex justify-between relative">
+                      <div class="p-4">
+                          <h3 class="text-lg font-semibold capitalize">{{ product.name }}</h3>
+                          <div class="flex justify-between items-center relative">
                               <p class="text-gray-600 text-sm">{{ product.description }}</p>
-                              <p class="text-gray-600 text-sm">${{ product.price }}</p>
+                              <p class="text-green-500 text-xl font-medium">${{ product.price }}</p>
                               <button class="text-green-500 absolute top-[-60px] right-0">
                                   <i class="fa-solid fa-cart-shopping border-4 relative border-white bg-[#D3E6D8] rounded-full p-3"></i>
                                   <span class="absolute right-1 bg-red-700 rounded-full text-sm text-white px-1">{{ product.stock }}</span>
