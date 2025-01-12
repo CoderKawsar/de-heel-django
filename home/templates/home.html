@@ -13,11 +13,29 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
   </head>
+
+  <style>
+    * {
+      font-family: "Inter", sans-serif;
+    }
+    .brand-bg {
+      background-color: #59b55e;
+    }
+    .brand-text {
+      color: #59b55e;
+    }
+  </style>
 
   <body class="relative">
     <!-- Header -->
@@ -129,7 +147,6 @@
     </header>
 
     <!-- Overlay -->
-    <div
       id="menu-overlay"
       class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"
     ></div>
@@ -581,14 +598,16 @@
       </div>
     </section>
 
-    <main class="mx-auto p-4">
+    <main class="mx-auto my-[100px]">
       <!-- Category -->
       <div class="max-w-[1200px] mx-auto justify-center items-center">
-        <h1 class="text-4xl font-bold text-center mt-5">Category</h1>
+        <h1 class="text-[64px] font-bold text-center mb-[60px]">
+          Our Products
+        </h1>
 
         {% for category_level1 in category_level1_list %}
         <p
-          class="text-3xl mb-[8px] cursor-pointer"
+          class="text-3xl mb-10 cursor-pointer capitalize"
           onclick="toggleCategoryLevel2('{{ category_level1.id }}')"
         >
           {{ category_level1.name }} <i class="ml-5 fa fa-chevron-down"></i>
@@ -596,7 +615,7 @@
 
         <div
           id="category-level2-{{ category_level1.id }}"
-          class="category-level2 hidden mb-[10px]"
+          class="category-level2 mb-[100px]"
         >
           <div
             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
@@ -608,19 +627,20 @@
               <img
                 src="{{ category_level2.image.url }}"
                 alt="{{ category_level2.name }}"
-                class="w-48 h-52 object-cover rounded-md"
+                class="w-full h-52 object-cover rounded-t-md"
               />
               <div class="grid grid-cols-10 w-full">
-                <div class="col-span-8 flex bg-[#D3E6D8] p-5">
-                  <p class="text-center text-3xl font-semibold text-gray-800">
+                <div class="col-span-8 flex p-5">
+                  <p
+                    class="text-center text-3xl font-semibold text-gray-800 capitalize"
+                  >
                     {{ category_level2.name }}
                   </p>
                 </div>
-                <div
-                  class="col-span-2 flex items-center justify-center bg-[#7AC47E] p-5"
-                >
+                <div class="col-span-2 flex items-center justify-center">
                   <a
                     href="{% url 'product' %}?category_level2={{ category_level2.id }}"
+                    class="brand-bg text-white px-3 py-2 rounded"
                   >
                     <i class="fa-solid text-center fa-arrow-right"></i>
                   </a>
@@ -645,7 +665,7 @@
       <!-- Latest Product -->
 
       <div class="py-10 max-w-[1200px] mx-auto">
-        <h2 class="text-4xl font-bold mb-8">Latest Product</h2>
+        <h2 class="text-[64px] font-bold text-center mb-12">Latest Product</h2>
 
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
@@ -667,11 +687,17 @@
               >
               {% endif %}
             </div>
-            <div class="p-4 bg-[#D3E6D8]">
-              <h3 class="text-lg font-semibold">{{ product.name }}</h3>
-              <div class="flex justify-between relative">
-                <p class="text-gray-600 text-sm">{{ product.description }}</p>
-                <p class="text-gray-600 text-sm">${{ product.price }}</p>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold capitalize pb-2">
+                {{ product.name }}
+              </h3>
+              <div class="flex justify-between items-center relative">
+                <p class="text-gray-600 text-sm caopitalize">
+                  {{ product.description }}
+                </p>
+                <p class="text-green-500 text-xl font-medium">
+                  ${{ product.price }}
+                </p>
                 <button class="text-green-500 absolute top-[-60px] right-0">
                   <i
                     class="fa-solid fa-cubes border-4 relative border-white bg-[#D3E6D8] rounded-full p-3"
@@ -689,11 +715,13 @@
       </div>
 
       <!-- About Us Section -->
-      <div class="py-10 max-w-[1200px] mx-auto">
+      <div class="my-[100px] max-w-[1200px] mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
-            <h1 class="text-center mt-5 font-bold text-3xl mb-3">About Us</h1>
-            <p class="leading-loose text-center">
+            <h1 class="text-center mt-5 font-bold text-[64px] mb-3">
+              About Us
+            </h1>
+            <p class="leading-loose text-justify">
               FB Footwear Limited is 100% Export oriented footwear manufacturing
               Company. FB Footwear inaugurated its journey on 2006 using
               European-origin machinery and technical know-how. A widely spaced
@@ -701,7 +729,9 @@
               world class factory system with own power.
             </p>
 
-            <button class="mx-auto flex bg-[#59B55E] px-5 py-2 rounded-lg mt-5">
+            <button
+              class="mx-auto text-white flex bg-[#59B55E] px-5 py-2 rounded-lg mt-5"
+            >
               Read More <i class="fa-solid ml-5 my-auto fa-arrow-right"></i>
             </button>
           </div>
@@ -714,8 +744,8 @@
 
       <!-- Strength -->
 
-      <div class="py-10 max-w-[1200px] mx-auto">
-        <h1 class="text-4xl font-bold text-center mt-5">Our Strength</h1>
+      <div class="my-[100px] max-w-[1200px] mx-auto">
+        <h1 class="text-[64px] font-bold text-center">Our Strength</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 py-10">
           {% for strength in strengths %}
@@ -739,17 +769,17 @@
       </div>
 
       <!--Factory Section -->
-      <div class="py-10 max-w-[1200px] mx-auto">
+      <div class="my-[100px] max-w-[1200px] mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
             <img src="{% static 'assets/factory2.png' %}" class="mx-auto" />
           </div>
 
           <div>
-            <h1 class="text-center mt-5 font-bold text-3xl mb-3">
+            <h1 class="text-center mt-5 font-bold text-[64px] mb-3">
               Factory Details
             </h1>
-            <p class="leading-loose text-center">
+            <p class="leading-loose text-justify">
               FB Footwear Limited is 100% Export oriented footwear manufacturing
               Company. FB Footwear inaugurated its journey on 2006 using
               European-origin machinery and technical know-how. A widely spaced
@@ -757,7 +787,9 @@
               world class factory system with own power.
             </p>
 
-            <button class="mx-auto flex bg-[#59B55E] px-5 py-2 rounded-lg mt-5">
+            <button
+              class="mx-auto text-white flex bg-[#59B55E] px-5 py-2 rounded-lg mt-5"
+            >
               Read More <i class="fa-solid ml-5 my-auto fa-arrow-right"></i>
             </button>
           </div>
@@ -766,10 +798,10 @@
 
       <!-- Achievement Carousel Section -->
 
-      <div class="py-10 max-w-[1200px] mx-auto overflow-hidden">
-        <h1 class="text-center mt-5 mb-5 font-bold text-2xl md:text-4xl">
+      <div class="my-[100px] max-w-[1200px] mx-auto overflow-hidden">
+        <h2 class="text-center mt-5 mb-16 font-bold text-2xl md:text-[64px]">
           Achievement
-        </h1>
+        </h2>
         <section class="my-0">
           <section class="carousel-3D-swiper-section">
             <div class="carousel-3D-swiper">
@@ -795,10 +827,12 @@
       </div>
 
       <!--Branch Section -->
-      <div class="py-10 max-w-[1200px] mx-auto">
-        <h1 class="text-4xl font-bold text-center mt-5 mb-5">OUR BRANCHES</h1>
+      <div class="my-[100px] max-w-[1200px] mx-auto">
+        <h1 class="text-[64px] font-semibold text-center mt-5 mb-10">
+          OUR BRANCHES
+        </h1>
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
         >
           {% for branch in branches %}
           <div class="relative rounded-lg overflow-hidden">
@@ -821,8 +855,10 @@
       </div>
 
       <!-- Gallery Section -->
-      <div class="py-10 max-w-full mx-auto">
-        <h1 class="text-4xl font-bold text-center mt-0 mb-5">Our Gallery</h1>
+      <div class="my-[100px] max-w-full mx-auto">
+        <h1 class="text-[64px] font-bold text-center mt-0 mb-10">
+          Our Gallery
+        </h1>
 
         <div class="overflow-hidden">
           <!-- First set of images (scrolling from left to right) -->
@@ -1020,18 +1056,18 @@
 
     <!-- Contact Section -->
     <section>
-      <div class="py-10 max-w-[1200px] mx-auto">
+      <div class="my-[100px] max-w-[1200px] mx-auto bg-gray-200">
         <div class="grid grid-cols-1 md:grid-cols-2">
           <div class="bg-[#1E1E1E]">
             <h1
-              class="text-center uppercase font-bold text-3xl mt-5 text-white"
+              class="text-center uppercase font-bold text-[64px] mt-10 text-white"
             >
               Contact us
             </h1>
-            <h3 class="m-5 text-white">
+            <!-- <h3 class="m-5 text-white">
               Have a question? Concern? Request? Your questions haven't been
               answered? Connect with us in your convenient way.
-            </h3>
+            </h3> -->
             <form
               method="POST"
               action="{% url 'submit_company_inquiry' %}"
@@ -1185,8 +1221,7 @@
             {% for link in footer_links %}
             <li class="text-base md:text-xl">
               <a href="{{ link.url }}" target="_blank">
-                <span class="text-[#59B55E] font-bold">&gt;</span> {{ link.name
-                }}
+                <span class="text-[#59B55E] font-bold">&gt;</span> {{link.name}}
               </a>
             </li>
             {% endfor %}
