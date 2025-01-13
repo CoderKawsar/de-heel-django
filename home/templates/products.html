@@ -37,6 +37,8 @@
             <nav class="hidden md:flex space-x-6 uppercase">
               <a href="{% url 'home' %}" class="hover:text-gray-300">Home</a>
               <a href="{% url 'product' %}" class="hover:text-gray-300">Products</a> 
+              <a href="#" class="hover:text-gray-300">Upload Sample</a> 
+              <a href="#" class="hover:text-gray-300">Blog</a> 
               <a href="{% url 'about' %}" class="hover:text-gray-300">About US</a> 
         
             </nav>
@@ -144,10 +146,11 @@
 
     <!-- Banner -->
     <main class="mx-auto p-4">
+        <h2 class="text-lg text-center md:text-[64px] font-bold mt-32 mb-12">Our Products</h2>
       <!-- Latest Product -->
-      <div class="py-10 max-w-[1200px] grid grid-cols-12 mx-auto mt-20">
+      <div class="py-10 max-w-[1500px] px-16 grid grid-cols-12 mx-auto mt-12">
           <!-- Category Section -->
-          <div class="col-span-3 bg-white m- 10 p-10 hidden md:block">
+          <div class="col-span-3 bg-white px-6 mr-12 hidden md:block shadow-lg">
               <form method="get" id="filterForm">
                   <!-- <h1 class="text-xl font-bold text-[#5ba164] text-center mb-4">Category</h1> -->
   
@@ -174,7 +177,7 @@
                                   {% for level2 in level1.level2_categories.all %}
                                   <div class="accordion flex flex-col">
                                       <div class="accordion-item border-b border-slate-200">
-                                          <button type="button" class="accordion-header flex justify-between gap-2 items-center w-full group transition-all duration-300 ease-in-out">
+                                          <button type="button" class="accordion-header py-2 flex justify-between gap-2 items-center w-full group transition-all duration-300 ease-in-out">
                                               <span class="text-lg font-medium text-black capitalize">{{ level2.name }}</span>
                                               <span class="shrink-0 text-2xl transition-transform duration-300 group-[.active]:rotate-180">
                                                   <i class="fa-solid fa-chevron-down text-black"></i>
@@ -183,10 +186,10 @@
                                           <div class="accordion-collapse max-h-0 overflow-hidden transition-all duration-300">
                                               <span class="block border-b-2 border-green-500 mt-1"></span> <!-- Green line -->
                                               <div class="pb-2 flex flex-col justify-end items-center">
-                                                  <div class="w-2/3 p-1 rounded-md text-black">
+                                                  <div class="w-2/3 py-2 px-2 rounded-md text-black">
                                                       {% for level3 in level2.level3_categories.all %}
-                                                      <label class="cursor-pointer block pb-2" onclick="setCategoryAndSubmit('{{ level3.id }}')">
-                                                          > {{ level3.name }}
+                                                      <label class="cursor-pointer block pb-2 capitalize" onclick="setCategoryAndSubmit('{{ level3.id }}')">
+                                                        {{ level3.name }}
                                                           <span class="block border-b-2 border-green-500 mt-1"></span> <!-- Green line -->
                                                       </label>
                                                       {% endfor %}
@@ -207,7 +210,6 @@
   
           <!-- Product Section -->
           <div class="col-span-12 md:col-span-9 ">
-              <h2 class="text-lg text-center md:text-[64px] font-bold mb-16">Our Products</h2>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {% for product in products %}
                   <div class="rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">

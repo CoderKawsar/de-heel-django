@@ -45,13 +45,13 @@
     >
       <div class="container mx-auto flex items-center justify-between p-4">
         <!-- Logo -->
-        <div class="flex items-center">
+        <div class="flex items-center ml-10">
           <a href="{% url 'home' %}">
             {% if footer and footer.logo %}
             <img
               src="{{ footer.logo.url }}"
               alt="Logo"
-              class="w-[129px] h-[39px] object-contain mr-3"
+              class="w-[45px] h-[45px] object-contain mr-3"
             />
             {% else %}
             <span class="text-lg font-bold">Logo</span>
@@ -63,11 +63,13 @@
         <nav class="hidden md:flex space-x-6 uppercase">
           <a href="{% url 'home' %}" class="hover:text-gray-300">Home</a>
           <a href="{% url 'product' %}" class="hover:text-gray-300">Products</a>
+          <a href="#" class="hover:text-gray-300">Upload Sample</a>
+          <a href="#" class="hover:text-gray-300">Blog</a>
           <a href="{% url 'about' %}" class="hover:text-gray-300">About US</a>
         </nav>
 
         <!-- Icons and Hamburger -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 mr-10">
           <button class="hover:text-gray-300 relative" id="bell-button">
             <i class="fa-solid fa-bell"></i>
             {% if new_appointments %}
@@ -189,6 +191,16 @@
             href="{% url 'product' %}"
             class="hover:text-gray-300 border-b border-gray-500 pb-2"
             >Products</a
+          >
+          <a
+            href="#"
+            class="hover:text-gray-300 border-b border-gray-500 pb-2"
+            >Upload Smaple</a
+          >
+          <a
+            href="#"
+            class="hover:text-gray-300 border-b border-gray-500 pb-2"
+            >Blog</a
           >
           <a
             href="{% url 'about' %}"
@@ -674,7 +686,7 @@
           <div
             class="rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
           >
-            <div class="relative">
+            <div class="relative border-b border-gray-200">
               <img
                 src="{{ product.image.url }}"
                 alt="{{ product.name }}"
@@ -692,7 +704,7 @@
                 {{ product.name }}
               </h3>
               <div class="flex justify-between items-center relative">
-                <p class="text-gray-600 text-sm caopitalize">
+                <p class="text-gray-600 text-sm capitalize">
                   {{ product.description }}
                 </p>
                 <p class="text-green-500 text-xl font-medium">
@@ -809,7 +821,7 @@
                 {% for image in carousel_images %}
                 <div class="swiper-slide">
                   <div
-                    class="relative w-full h-[400px] overflow-hidden rounded-lg"
+                    class="relative w-full h-[450px] overflow-hidden rounded-lg"
                   >
                     <img
                       class="w-full h-full object-cover"
