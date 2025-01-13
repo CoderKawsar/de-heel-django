@@ -35,6 +35,11 @@
     .brand-text {
       color: #59b55e;
     }
+    .brand-border {
+      border-bottom: 3px solid transparent;
+      border-image: linear-gradient(to right,#047857,#63e34d,#047857 );
+      border-image-slice: 1;
+    }
   </style>
 
   <body class="relative">
@@ -613,9 +618,11 @@
     <main class="mx-auto my-[100px]">
       <!-- Category -->
       <div class="max-w-[1200px] mx-auto justify-center items-center">
-        <h1 class="text-[64px] font-bold text-center mb-[60px]">
-          Our Products
-        </h1>
+        <div class="flex justify-center">
+          <h1 class="text-[64px] font-bold w-fit mb-[60px] border-b-[3px] brand-border">
+            Our Products
+          </h1>
+        </div>
 
         {% for category_level1 in category_level1_list %}
         <p
@@ -677,7 +684,9 @@
       <!-- Latest Product -->
 
       <div class="py-10 max-w-[1200px] mx-auto">
-        <h2 class="text-[64px] font-bold text-center mb-12">Latest Product</h2>
+        <div class="flex justify-center">
+          <h2 class="brand-border text-[64px] font-bold text-center mb-16">Latest Product</h2>
+        </div>
 
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
@@ -757,7 +766,9 @@
       <!-- Strength -->
 
       <div class="my-[100px] max-w-[1200px] mx-auto">
-        <h1 class="text-[64px] font-bold text-center">Our Strength</h1>
+        <div class="flex justify-center">
+          <h1 class="brand-border text-[64px] font-bold text-center">Our Strength</h1>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 py-10">
           {% for strength in strengths %}
@@ -811,9 +822,11 @@
       <!-- Achievement Carousel Section -->
 
       <div class="my-[100px] max-w-[1200px] mx-auto overflow-hidden">
-        <h2 class="text-center mt-5 mb-16 font-bold text-2xl md:text-[64px]">
-          Achievement
-        </h2>
+        <div class="flex justify-center">
+          <h2 class="brand-border text-center mt-5 pb-8 mb-16 font-bold text-2xl md:text-[64px]">
+            Achievement
+          </h2>
+        </div>
         <section class="my-0">
           <section class="carousel-3D-swiper-section">
             <div class="carousel-3D-swiper">
@@ -840,9 +853,11 @@
 
       <!--Branch Section -->
       <div class="my-[100px] max-w-[1200px] mx-auto">
-        <h1 class="text-[64px] font-semibold text-center mt-5 mb-10">
-          OUR BRANCHES
-        </h1>
+        <div class="flex justify-center">
+          <h1 class="brand-border text-[64px] font-semibold text-center mt-5 mb-16">
+            OUR BRANCHES
+          </h1>
+        </div>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
         >
@@ -868,9 +883,11 @@
 
       <!-- Gallery Section -->
       <div class="my-[100px] max-w-full mx-auto">
-        <h1 class="text-[64px] font-bold text-center mt-0 mb-10">
-          Our Gallery
-        </h1>
+        <div class="flex justify-center">
+          <h1 class="brand-border text-[64px] font-bold text-center mt-0 mb-16">
+            Our Gallery
+          </h1>
+        </div>
 
         <div class="flex gap-x-4 overflow-hidden">
           {% for i in '12345'|make_list %}
