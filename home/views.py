@@ -136,7 +136,6 @@ def submit_company_inquiry(request):
 
     return redirect('home')
 
-
 def about(request):
     banner = AboutUsBanner.objects.last()
     company_voice = CompanyVoice.objects.last()

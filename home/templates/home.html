@@ -872,9 +872,28 @@
           Our Gallery
         </h1>
 
-        <div class="overflow-hidden">
+        <div class="flex gap-x-4 overflow-hidden">
+          {% for i in '12345'|make_list %}
+            <div class="flex flex-col gap-y-4 {% if forloop.counter0|divisibleby:'2' %}mt-32{% else %}mt-0{% endif %}">
+              {% for gallery_image in gallery_images %}
+              {% if i|add:i == forloop.counter or i|add:i|add:-1 == forloop.counter %}
+                <div class="h-[500px] w-[400px]">
+                  <img
+                    src="{{ gallery_image.image.url }}"
+                    class="h-[500px] w-[400px] object-cover rounded-xl"
+                    alt="{{ gallery_image.title }}"
+                  />
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- old gallery -->
+        <!-- <div class="overflow-hidden"> -->
           <!-- First set of images (scrolling from left to right) -->
-          <div class="flex animate-scroll-left-to-right gap-3 mt-4">
+          <!-- <div class="flex animate-scroll-left-to-right gap-3 mt-4">
             {% for image in gallery_images %}
             <div class="flex-none w-1/11 h-60">
               <img
@@ -884,10 +903,10 @@
               />
             </div>
             {% endfor %}
-          </div>
+          </div> -->
 
           <!-- Second set of images (scrolling from right to left) -->
-          <div class="flex animate-scroll-right-to-left gap-3 mt-4">
+          <!-- <div class="flex animate-scroll-right-to-left gap-3 mt-4">
             {% for image in gallery_images %}
             <div class="flex-none w-1/11 h-60">
               <img
@@ -898,8 +917,8 @@
             </div>
             {% endfor %}
           </div>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
 
       <!-- Add the animation styles -->
       <style>
