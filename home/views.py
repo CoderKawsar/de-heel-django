@@ -1,6 +1,6 @@
 from django.utils import timezone
 from datetime import datetime
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
@@ -141,6 +141,7 @@ def about(request):
     company_voice = CompanyVoice.objects.last()
     factory_detail = FactoryDetail.objects.last()
     video_section = VideoSection.objects.first()
+    contact_us = ContactUs.objects.first()
     chairman_message = ChairmanMessage.objects.last()
     director_message = DirectorMessage.objects.last()
     team_members = TeamMember.objects.all()
@@ -170,6 +171,7 @@ def about(request):
         "company_voice": company_voice,
         "factory_detail": factory_detail,
         "video_section": video_section,
+        'contact_us': contact_us,
         "chairman_message": chairman_message,
         "director_message": director_message,
         "team_members": team_members,
@@ -178,9 +180,6 @@ def about(request):
         'footer_links': footer_links,
         'level1_categories': level1_categories,
         'products': products,
-   
-   
-        
     }
     return render(request, 'about.html', context)
 
@@ -198,6 +197,8 @@ def product(request):
     # products = Product.objects.order_by('-id')
     products = Product.objects.all()
 
+    contact_us = ContactUs.objects.first()
+
     if category_all == "all":
         pass
     elif category_level3:
@@ -212,9 +213,22 @@ def product(request):
         'products': products,
         'footer': footer,
         'footer_links': footer_links,
-        
-   
+        'contact_us': contact_us,
     }
     return render(request, 'products.html', context)
+
+def product_details(request, id):
+    product = get_object_or_404(Product, id=id)
+    footer = Footer.objects.first()
+    footer_links = FooterLink.objects.all() 
+    contact_us = ContactUs.objects.first()
+
+    context = {
+        'product': product,
+        'footer': footer,
+        'footer_links': footer_links,
+        'contact_us': contact_us,
+    }
+    return render(request, 'product-details.html', context)
 
 

@@ -14,13 +14,18 @@
 
 <body class="relative">
     <!-- Header -->
-    <header id="navbar" class="bg-gray-800 bg-opacity-70 text-white fixed w-full top-0 z-50">
-        <div class="container mx-auto flex items-center justify-between p-4">
+    <body class="relative">
+        <!-- Header -->
+        <header
+          id="navbar"
+          class="bg-gray-800 bg-opacity-70 text-white fixed w-full top-0 z-50"
+        >
+          <div class="container mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
-            <div class="flex items-center">
+            <div class="flex items-center ml-10">
                 <a href="{% url 'home' %}">
                     {% if footer and footer.logo %}
-                        <img src="{{ footer.logo.url }}" alt="Logo" class="w-[129px] h-[39px] object-contain mr-3">
+                        <img src="{{ footer.logo.url }}" alt="Logo" class="w-[45px] h-[45px] object-contain mr-3">
                     {% else %}
                         <span class="text-lg font-bold">Logo</span>
                     {% endif %}
@@ -32,12 +37,14 @@
             <nav class="hidden md:flex space-x-6 uppercase">
                 <a href="{% url 'home' %}" class="hover:text-gray-300">Home</a>
                 <a href="{% url 'product' %}" class="hover:text-gray-300">Products</a> 
+                <a href="#" class="hover:text-gray-300">Upload Sample</a>
+                <a href="#" class="hover:text-gray-300">Blog</a>
                 <a href="{% url 'about' %}" class="hover:text-gray-300">About US</a>
 
             </nav>
 
             <!-- Icons and Hamburger -->
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-4 mr-10">
                 <button class="hover:text-gray-300">
                     <i class="fa-solid fa-bell"></i>
                 </button>
